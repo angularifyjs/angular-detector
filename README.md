@@ -6,9 +6,44 @@ Bring Class into Javascript with extendable and bindable feature.
 
 Usage
 ---------
-[Once you have your environment setup](http://docs.angularjs.org/misc/contribute) just run:
+### Installing
+Download the [Production version](https://raw.githubusercontent.com/angularifyjs/bower-angular-closure/master/closure.min.js) or the [Development version](https://raw.githubusercontent.com/angularifyjs/bower-angular-closure/master/closure.js).
 
-    grunt package
+Or download it with bower: open terminal and run
+
+```
+  bower install angular-closure
+```
+
+Include js files into your web page:
+
+```
+  <script type="text/javascript" src="[...]/angular-closure[.min].js"></script>
+```
+
+Add dependency to your app module:
+
+```
+  angular.module('your-app-name', [
+    'angular-closure'
+  ]);
+```
+
+The `closure` module is now installed. It exposes the `ClosureProvider` provider and `Closure` factory into your app.
+
+
+### Using
+
+Create object A
+
+```javascript
+  angular.module('app', [
+  	'angular-closure'
+  ]).run(function(){
+  	
+  })
+  
+```
 
 
 Documentation
