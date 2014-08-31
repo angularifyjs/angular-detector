@@ -1,7 +1,6 @@
 #!/bin/bash
 
-# ARG_DEFS=(init prepare publish)
-ARG_DEFS=(init)
+ARG_DEFS=(init prepare publish)
 REPO="git@github.com:angularifyjs/bower-angular-closure.git"
 NAME="angular-closure"
 
@@ -33,6 +32,7 @@ function prepare {
   replaceJsonProp "bower.json" "version" ".*" $NEW_VERSION   
 
   # remove old script and copy new script
+  cp -R ../../LICENSE .
   cp -R ../../dist/* .
   
   # commit bower repo
