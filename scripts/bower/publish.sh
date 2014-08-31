@@ -2,7 +2,7 @@
 
 ARG_DEFS=(init prepare publish)
 REPO="git@github.com:angularifyjs/bower-angular-closure.git"
-NAME="bower-angular-closure"
+NAME="angular-closure"
 
 function init {
   ROOT_DIR=$(resolveDir ../..)
@@ -28,7 +28,7 @@ function prepare {
   
   # update bower version
   echo "-- Updating version in $NAME to $NEW_VERSION"
-  cd $NAME
+  cd bower-$NAME
   replaceJsonProp "bower.json" "version" ".*" $NEW_VERSION   
 
   # remove old script and copy new script
@@ -42,7 +42,7 @@ function prepare {
 }
 
 function publish {
-  cd $ROOT_DIR/.publish/$NAME
+  cd $ROOT_DIR/.publish/bower-$NAME
   git push origin master
   git push origin v$NEW_VERSION
   bower update $NAME
