@@ -39,10 +39,10 @@ angular.module('app', [
   'angular-closure'
 ]).run(function(Closure, $http){
 
-	/** 
-	 * Create object A
-	/*
- 	A = Closure.extend({
+  /*
+   * Create object A
+  /*
+  A = Closure.extend({
     value: null,
     init: function() {
       this.value = 0;
@@ -61,7 +61,7 @@ angular.module('app', [
   // if A.set(100) then A.value and A.get() will be equal 100
 
   /** 
-	 * Extend A object
+   * Extend A object
 	/*
 	A.extend({
 		init: function() {
@@ -89,17 +89,17 @@ angular.module('app', [
 	'angular-closure'
 ]).run(function(Closure){
 
-	// bind `this` object inside callback
-	var B = Closure.extend({
-		values: [],
-		init: function(){
-			angular.forEach([1,2,3,4,5], Closure.bind(function(value){
-				this.values.push(value);
-			}, this));
-		}
-	});
+  // bind `this` object inside callback
+  var B = Closure.extend({
+    values: [],
+    init: function(){
+      angular.forEach([1,2,3,4,5], Closure.bind(function(value){
+        this.values.push(value);
+      }, this));
+    }
+  });
 
-	// B.values is equal [1,2,3,4,5]
+  // B.values is equal [1,2,3,4,5]
 
 });
 ```
