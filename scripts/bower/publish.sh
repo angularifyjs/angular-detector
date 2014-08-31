@@ -1,12 +1,13 @@
 #!/bin/bash
 
-ARG_DEFS=(init prepare publish)
+# ARG_DEFS=(init prepare publish)
+ARG_DEFS=(init)
 REPO="git@github.com:angularifyjs/bower-angular-closure.git"
 NAME="angular-closure"
 
 function init {
   ROOT_DIR=$(resolveDir ../..)
-  NEW_VERSION=$(cat $ROOT_DIR/package.json | underscore extract version)
+  NEW_VERSION=$(cat $ROOT_DIR/package.json | underscore extract version | tr -d '"')
 }
 
 function prepare {

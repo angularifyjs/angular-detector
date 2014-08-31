@@ -11,7 +11,7 @@
 # - note: propertyRegex will be automatically placed into a
 #   capturing group! -> all other groups start at index 2!
 function replaceJsonProp {
-  replaceInFile $1 '"('$2')"[ ]*:[ ]*"'$3'"' '"\1": '$4''
+  replaceInFile $1 '"('$2')"[ ]*:[ ]*"'$3'"' '"\1": "'$4'"'
 }
 
 
