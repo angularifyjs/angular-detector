@@ -62,7 +62,7 @@ angular.module('app', [
 
   ///////////////////////////////////////////////////
   // Extend A object
-	///////////////////////////////////////////////////
+  ///////////////////////////////////////////////////
 	A.extend({
 		init: function() {
       this.value = 200;
@@ -78,11 +78,10 @@ angular.module('app', [
 	// A.value is equal 200
 	// A.get() is equal `value=200`. `this._super` will refer to parent function which return `this.value`
 	// A.test() is equal `hello moto`
-
 });
 ```
 
-**Note:** `this._super()` does not work in `async` because it will be cleared up at the end of the function. Be careful with `this` object. Take advantage of the best practice below:
+**Note:** `this._super()` does not work in `async` because it will be cleared up at the end of the function. You may need to use `var _super = this._super` before call `async`. Be careful with `this` object. Take advantage of the best practice below:
 
 ```javascript
 angular.module('app', [
@@ -102,7 +101,6 @@ angular.module('app', [
   });
 
   // B.values is equal [1,2,3,4,5]
-
 });
 ```
 
