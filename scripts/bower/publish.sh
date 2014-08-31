@@ -1,6 +1,6 @@
 #!/bin/bash
 
-ARG_DEFS=(init prepare publish)
+ARG_DEFS=(init prepare publish clearup)
 REPO="git@github.com:angularifyjs/bower-angular-closure.git"
 NAME="angular-closure"
 
@@ -41,6 +41,7 @@ function prepare {
   echo "------------------------------------------------"
   echo "-- Remove old scripts and copy new scripts"
   echo "------------------------------------------------"
+  rm -rf closure*
   cp -R ../../LICENSE .
   cp -R ../../dist/* .
 }
@@ -51,14 +52,22 @@ function publish {
   echo "------------------------------------------------"
   git add --all
   git commit -m "v$NEW_VERSION"
-  git tag v$NEW_VERSION 
-  
+  git tag v$NEW_VERSION   
+
   echo "------------------------------------------------"
   echo "-- publish"
   echo "------------------------------------------------"
   cd $ROOT_DIR/.publish/bower-$NAME
   git push origin master
   git push origin v$NEW_VERSION
+}
+
+function clearup {
+  echo "------------------------------------------------"
+  echo "-- clear up"
+  echo "------------------------------------------------"
+  cd $ROOT_DIR
+  rm -rf .publish
 }
 
 source $(dirname $0)/../utils.inc
