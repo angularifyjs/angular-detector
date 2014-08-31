@@ -37,11 +37,11 @@ The `closure` module is now installed. It exposes the `ClosureProvider` provider
 Create object A
 
 ```javascript
-  angular.module('app', [
-    'angular-closure'
-  ]).run(function(){
+angular.module('app', [
+  'angular-closure'
+]).run(function(){
  	
-  });
+});
 ```
 
 
