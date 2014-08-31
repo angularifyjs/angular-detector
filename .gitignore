@@ -2,6 +2,10 @@
 bower_components
 dist
 test/results/*
+.tmp
+.build
+.publish
+.swp
 
 # Logs
 logs
