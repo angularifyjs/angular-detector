@@ -6,7 +6,7 @@ NAME="bower-angular-closure"
 
 function init {
   ROOT_DIR=$(resolveDir ../..)
-  NEW_VERSION=$(cat $ROOT_DIR/package.json | underscore extract 'version')
+  NEW_VERSION=$(cat $ROOT_DIR/package.json | underscore extract version)
 }
 
 function prepare {
@@ -29,13 +29,23 @@ function prepare {
   # update bower version
   echo "-- Updating version in $NAME to $NEW_VERSION"
   cd $NAME
-  replaceJsonProp "bower.json" "version" ".*" "$NEW_VERSION"   
+  replaceJsonProp "bower.json" "version" ".*" $NEW_VERSION   
 
+  # remove old script and copy new script
+  cp -R ../../dist/* .
   
+  # commit bower repo
+  echo "-- Commit bower repo"
+  git add --all
+  git commit -m "v$NEW_VERSION"
+  git tag v$NEW_VERSION 
 }
 
 function publish {
-  echo moto
+  cd $ROOT_DIR/.publish/$NAME
+  git push origin master
+  git push origin v$NEW_VERSION
+  bower update $NAME
 }
 
 source $(dirname $0)/../utils.inc
