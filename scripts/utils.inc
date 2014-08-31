@@ -32,10 +32,10 @@ function resolveDir {
 # main 
 # - kick start bash script
 function main {
-  SCRIPT_DIR=$(pwd)
+  cd $(dirname $0);SCRIPT_DIR=$(pwd)
   for arg in ${ARG_DEFS[*]}
   do
     eval $arg
   done
 }
-main
+main "$@"

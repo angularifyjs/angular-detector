@@ -10,43 +10,55 @@ function init {
 }
 
 function prepare {
-  # build
+  echo "------------------------------------------------"
+  echo "-- Run test & build"
+  echo "------------------------------------------------"
   cd $ROOT_DIR
   npm install
   bower install
   gulp test
   gulp build
 
-  # clear up publish directory
+  echo "------------------------------------------------"
+  echo "-- Clear up publish directory"
+  echo "------------------------------------------------"
   cd $ROOT_DIR
   rm -rf .publish
   mkdir .publish
 
-  # checkout bower repo
+  echo "------------------------------------------------"
+  echo "-- Checkout bower repo"
+  echo "------------------------------------------------"
   cd .publish
   git clone $REPO 
   
-  # update bower version
+  echo "------------------------------------------------"
   echo "-- Updating version in $NAME to $NEW_VERSION"
+  echo "------------------------------------------------"
   cd bower-$NAME
   replaceJsonProp "bower.json" "version" ".*" $NEW_VERSION   
 
-  # remove old script and copy new script
+  echo "------------------------------------------------"
+  echo "-- Remove old scripts and copy new scripts"
+  echo "------------------------------------------------"
   cp -R ../../LICENSE .
   cp -R ../../dist/* .
-  
-  # commit bower repo
-  echo "-- Commit bower repo"
-  git add --all
-  git commit -m "v$NEW_VERSION"
-  git tag v$NEW_VERSION 
 }
 
 function publish {
+  echo "------------------------------------------------"
+  echo "-- Commit bower repo"
+  echo "------------------------------------------------"
+  git add --all
+  git commit -m "v$NEW_VERSION"
+  git tag v$NEW_VERSION 
+  
+  echo "------------------------------------------------"
+  echo "-- publish"
+  echo "------------------------------------------------"
   cd $ROOT_DIR/.publish/bower-$NAME
   git push origin master
   git push origin v$NEW_VERSION
-  bower update $NAME
 }
 
 source $(dirname $0)/../utils.inc
