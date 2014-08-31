@@ -9,6 +9,10 @@ var runSequence = require('run-sequence');
 Tasks
 /*************************************************************/
 
+gulp.task('build', function() {
+	
+});
+
 gulp.task('default', function() {
   return runSequence('jshint', watch);
 });
@@ -28,7 +32,3 @@ gulp.task('karma', function(done) {
 gulp.task('test', function() {
   return runSequence('jshint', 'karma');
 });
-
-/**************************************************************
-
-/*************************************************************/
