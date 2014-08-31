@@ -38,12 +38,11 @@ Create object A
 
 >
 ```javascript
-angular.module('app', [
-  'angular-closure'
-]).run(function(){
-  	
-});
-
+  angular.module('app', [
+    'angular-closure'
+  ]).run(function(){
+ 	
+  });
 ```
 
 
