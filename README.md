@@ -6,7 +6,9 @@ Bring Class into Javascript with extendable and bindable feature.
 
 Usage
 ---------
-### Installing
+
+## Installing
+
 Download the [Production version](https://raw.githubusercontent.com/angularifyjs/bower-angular-closure/master/closure.min.js) or the [Development version](https://raw.githubusercontent.com/angularifyjs/bower-angular-closure/master/closure.js).
 
 Or download it with bower: open terminal and run
@@ -32,7 +34,7 @@ angular.module('your-app-name', [
 The `closure` module is now installed. It exposes the `ClosureProvider` provider and `Closure` factory into your app.
 
 
-### Using
+## Using
 
 ```javascript
 angular.module('app', [
@@ -81,7 +83,10 @@ angular.module('app', [
 });
 ```
 
-**Note:** `this._super()` does not work in `async` because it will be cleared up at the end of the function. You may need to use `var _super = this._super` before call `async`. Be careful with `this` object. Take advantage of the best practice below:
+**Note:** 
+- `this._super()` does not work in `async` because it will be cleared up at the end of the function. You may need to use `var _super = this._super` before call `async`. 
+- You can extend many levels as you want. 
+- Be careful with `this` object. Take advantage of the best practice below:
 
 ```javascript
 angular.module('app', [
@@ -107,8 +112,7 @@ angular.module('app', [
 
 Documentation
 -------------
-- [Getting started](https://github.com/ncuillery/angular-breadcrumb/wiki/Getting-started)
-- [API Reference](https://github.com/ncuillery/angular-breadcrumb/wiki/API-Reference)
+See [Getting started](https://github.com/angularifyjs/angular-closure/wiki/Getting-started)
 
 
 Release History
