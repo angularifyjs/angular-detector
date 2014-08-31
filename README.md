@@ -39,9 +39,9 @@ angular.module('app', [
   'angular-closure'
 ]).run(function(Closure, $http){
 
-  /*
-   * Create object A
-  /*
+  ///////////////////////////////////////////////////
+  // Create object A
+  ///////////////////////////////////////////////////
   A = Closure.extend({
     value: null,
     init: function() {
@@ -60,9 +60,9 @@ angular.module('app', [
   // A.get() will return 0
   // if A.set(100) then A.value and A.get() will be equal 100
 
-  /** 
-   * Extend A object
-	/*
+  ///////////////////////////////////////////////////
+  // Extend A object
+	///////////////////////////////////////////////////
 	A.extend({
 		init: function() {
       this.value = 200;
@@ -89,7 +89,9 @@ angular.module('app', [
 	'angular-closure'
 ]).run(function(Closure){
 
+  ///////////////////////////////////////////////////
   // bind `this` object inside callback
+  ///////////////////////////////////////////////////
   var B = Closure.extend({
     values: [],
     init: function(){
