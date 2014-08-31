@@ -17,3 +17,4 @@ script:
 
 after_script:
   - cat test/results/coverage/*/lcov.info | ./node_modules/coveralls/bin/coveralls.js
+  
