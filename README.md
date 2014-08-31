@@ -29,8 +29,7 @@ See [CONTRIBUTING.md](https://github.com/ncuillery/angular-breadcrumb/blob/maste
 
 License
 -------------
-Copyright (c) 2014 Angularfiy.org & HenryTao
-Licensed under the MIT license.
+Copyright (c) 2014 Angularfiy.org & HenryTao.
 
 
 
