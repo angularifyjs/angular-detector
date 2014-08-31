@@ -117,12 +117,12 @@ See [Getting started](https://github.com/angularifyjs/angular-closure/wiki/Getti
 
 Release History
 -------------
-See [CHANGELOG.md](https://github.com/ncuillery/angular-breadcrumb/blob/master/CHANGELOG.md)
+See [CHANGELOG.md](https://github.com/angularifyjs/angular-closure/blob/master/CHANGELOG.md)
 
 
 Contributing
 -------------
-See [CONTRIBUTING.md](https://github.com/ncuillery/angular-breadcrumb/blob/master/CONTRIBUTING.md)
+See [CONTRIBUTING.md](https://github.com/angularifyjs/angular-closure/blob/master/CONTRIBUTING.md)
 
 
 License
