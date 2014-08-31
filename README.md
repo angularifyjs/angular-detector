@@ -12,21 +12,21 @@ Download the [Production version](https://raw.githubusercontent.com/angularifyjs
 Or download it with bower: open terminal and run
 
 ```
-  bower install angular-closure
+bower install angular-closure
 ```
 
 Include js files into your web page:
 
-```
-  <script type="text/javascript" src="[...]/angular-closure[.min].js"></script>
+```html
+<script type="text/javascript" src="[...]/angular-closure[.min].js"></script>
 ```
 
 Add dependency to your app module:
 
-```
-  angular.module('your-app-name', [
-    'angular-closure'
-  ]);
+```javascript
+angular.module('your-app-name', [
+  'angular-closure'
+]);
 ```
 
 The `closure` module is now installed. It exposes the `ClosureProvider` provider and `Closure` factory into your app.
