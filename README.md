@@ -4,27 +4,33 @@ angular-closure [![Build Status](https://travis-ci.org/angularifyjs/angular-clos
 Bring Class into Javascript with extendable and bindable feature.
 
 
-Building AngularJS
+Usage
 ---------
 [Once you have your environment setup](http://docs.angularjs.org/misc/contribute) just run:
 
     grunt package
 
 
-Running Tests
+Documentation
 -------------
-To execute all unit tests, use:
-
-    grunt test:unit
-
-To execute end-to-end (e2e) tests, use:
-
-    grunt package
-    grunt test:e2e
-
-To learn more about the grunt tasks, run `grunt --help` and also read our
-[contribution guidelines](http://docs.angularjs.org/misc/contribute).
+- [Getting started](https://github.com/ncuillery/angular-breadcrumb/wiki/Getting-started)
+- [API Reference](https://github.com/ncuillery/angular-breadcrumb/wiki/API-Reference)
 
 
-[![Analytics](https://ga-beacon.appspot.com/UA-8594346-11/angular.js/README.md?pixel)](https://github.com/igrigorik/ga-beacon)
+Release History
+-------------
+See [CHANGELOG.md](https://github.com/ncuillery/angular-breadcrumb/blob/master/CHANGELOG.md)
+
+
+Contributing
+-------------
+See [CONTRIBUTING.md](https://github.com/ncuillery/angular-breadcrumb/blob/master/CONTRIBUTING.md)
+
+
+License
+-------------
+Copyright (c) 2013 HenryTao
+Licensed under the MIT license.
+
+
 
