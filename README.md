@@ -127,7 +127,7 @@ See [CONTRIBUTING.md](https://github.com/angularifyjs/angular-closure/blob/maste
 
 License
 -------------
-Copyright (c) 2014 Angularfiy.org & HenryTao.
+MIT - Copyright (c) 2014 Angularfiy.org & HenryTao.
 
 
 
