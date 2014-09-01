@@ -65,8 +65,8 @@ angular.module('app', [
   ///////////////////////////////////////////////////
   // Extend A object
   ///////////////////////////////////////////////////
-	A.extend({
-		init: function() {
+  A.extend({
+    init: function() {
       this.value = 200;
     },
     get: function() {
@@ -75,7 +75,7 @@ angular.module('app', [
     test: function(){
       return 'hello moto';
     }
-	});
+  });
 
 	// A.value is equal 200
 	// A.get() is equal `value=200`. `this._super` will refer to parent function which return `this.value`
