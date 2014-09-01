@@ -77,9 +77,9 @@ angular.module('app', [
     }
   });
 
-	// A.value is equal 200
-	// A.get() is equal `value=200`. `this._super` will refer to parent function which return `this.value`
-	// A.test() is equal `hello moto`
+  // A.value is equal 200
+  // A.get() is equal `value=200`. `this._super` will refer to parent function which return `this.value`
+  // A.test() is equal `hello moto`
 });
 ```
 
