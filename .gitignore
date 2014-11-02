@@ -1,4 +1,5 @@
 # Custom
+.DS_Store
 bower_components
 dist
 test/results/*

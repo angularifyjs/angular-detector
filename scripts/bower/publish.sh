@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Usage:
+# ./publish.sh
+
 ARG_DEFS=(init prepare publish clearup)
 REPO="git@github.com:angularifyjs/bower-angular-closure.git"
 NAME="angular-closure"
@@ -52,7 +55,7 @@ function publish {
   echo "------------------------------------------------"
   git add --all
   git commit -m "v$NEW_VERSION"
-  git tag v$NEW_VERSION   
+  git tag v$NEW_VERSION
 
   echo "------------------------------------------------"
   echo "-- publish"
