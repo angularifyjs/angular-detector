@@ -18,13 +18,11 @@
     "bind"
   ],
   "author": "Henry Tao <hi@henrytao.me>",
-  "licenses": [
-    {
-      "type": "MIT",
-      "url": "https://github.com/angularifyjs/angular-closure/blob/master/LICENSE",
-      "description": "Copyright (c) 2014 Angularfiy.org & HenryTao."
-    }
-  ],
+  "licenses": [{
+    "type": "MIT",
+    "url": "https://github.com/angularifyjs/angular-closure/blob/master/LICENSE",
+    "description": "Copyright (c) 2014 Angularfiy.org & HenryTao."
+  }],
   "bugs": {
     "url": "https://github.com/angularifyjs/angular-closure/issues"
   },
@@ -33,7 +31,12 @@
     "coveralls": "2.11.1",
     "expect.js": "0.3.1",
     "gulp": "3.8.7",
+    "gulp-clean": "0.3.1",
+    "gulp-concat": "2.3.4",
+    "gulp-header": "1.0.5",
     "gulp-jshint": "1.7.1",
+    "gulp-ng-annotate": "0.3.0",
+    "gulp-uglify": "1.0.0",
     "jshint-stylish": "0.4.0",
     "karma": "0.12.17",
     "karma-coverage": "0.2.4",
@@ -43,11 +46,6 @@
     "karma-phantomjs-launcher": "0.1.4",
     "mocha": "1.17.1",
     "phantomjs": "1.9.7-15",
-    "run-sequence": "0.3.6",
-    "gulp-uglify": "1.0.0",
-    "gulp-header": "1.0.5",
-    "gulp-clean": "0.3.1",
-    "gulp-concat": "2.3.4",
-    "gulp-ng-annotate": "0.3.0"
+    "run-sequence": "0.3.6"
   }
 }
