@@ -1,6 +1,6 @@
 {
   "name": "angular-closure",
-  "version": "1.2.23",
+  "version": "1.2.26",
   "description": "Bring class into javascript with extendable and bindable feature.",
   "main": "gulpfile.js",
   "scripts": {

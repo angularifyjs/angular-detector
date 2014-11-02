@@ -1,7 +1,7 @@
 {
   "name": "angular-closure",
   "devDependencies": {
-    "angular": "1.2.23",
-    "angular-mocks": "1.2.23"
+    "angular": "1.2.26",
+    "angular-mocks": "1.2.26"
   }
 }

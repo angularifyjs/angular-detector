@@ -3,7 +3,7 @@
 # Usage:
 # ./publish.sh
 
-ARG_DEFS=(init prepare publish clearup)
+ARG_DEFS=(init prepare publish cleanup)
 REPO="git@github.com:angularifyjs/bower-angular-closure.git"
 NAME="angular-closure"
 
@@ -64,10 +64,10 @@ function publish {
   git push origin v$NEW_VERSION
 }
 
-function clearup {
+function cleanup {
   echo ""
   echo "------------------------------------------------"
-  echo "-- clear up"
+  echo "-- clean up"
   cd $ROOT_DIR
   rm -rf .publish
 }

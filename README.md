@@ -20,7 +20,7 @@ bower install angular-closure
 Include js files into your web page:
 
 ```html
-<script type="text/javascript" src="[...]/angular-closure[.min].js"></script>
+<script type="text/javascript" src="[...]/closure[.min].js"></script>
 ```
 
 Add dependency to your app module:
