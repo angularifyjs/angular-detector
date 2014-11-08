@@ -1,7 +1,7 @@
-angular-closure [![Build Status](https://travis-ci.org/angularifyjs/angular-closure.svg?branch=master)](https://travis-ci.org/angularifyjs/angular-closure) [![Coverage Status](https://img.shields.io/coveralls/angularifyjs/angular-closure.svg)](https://coveralls.io/r/angularifyjs/angular-closure?branch=master)
+angular-cookies [![Build Status](https://travis-ci.org/angularifyjs/angular-cookies.svg?branch=master)](https://travis-ci.org/angularifyjs/angular-cookies) [![Coverage Status](https://img.shields.io/coveralls/angularifyjs/angular-cookies.svg)](https://coveralls.io/r/angularifyjs/angular-cookies?branch=master)
 ===============
 
-Bring Class into Javascript with extendable and bindable feature.
+Cookies is a small client-side javascript library that makes managing cookies easily and integrate with AngularJS
 
 
 Usage
@@ -9,104 +9,174 @@ Usage
 
 ## Installing
 
-Download the [Production version](https://raw.githubusercontent.com/angularifyjs/bower-angular-closure/master/closure.min.js) or the [Development version](https://raw.githubusercontent.com/angularifyjs/bower-angular-closure/master/closure.js).
+Download the [Production version](https://raw.githubusercontent.com/angularifyjs/bower-angular-cookies/master/cookies.min.js) or the [Development version](https://raw.githubusercontent.com/angularifyjs/bower-angular-cookies/master/cookies.js).
 
 Or download it with bower: open terminal and run
 
 ```
-bower install angular-closure
+bower install angular-cookies
 ```
 
 Include js files into your web page:
 
 ```html
-<script type="text/javascript" src="[...]/closure[.min].js"></script>
+<script type="text/javascript" src="[...]/cookies[.min].js"></script>
 ```
 
 Add dependency to your app module:
 
 ```javascript
 angular.module('your-app-name', [
-  'angular-closure'
+  'angular-cookies'
 ]);
 ```
 
-The `closure` module is now installed. It exposes the `ClosureProvider` provider and `Closure` factory into your app.
+The `cookies` module is now installed. It exposes the `CookiesProvider` provider and `Cookies` factory into your app.
 
 
 ## Using
 
 ```javascript
 angular.module('app', [
-  'angular-closure'
-]).run(function(Closure, $http){
+  'angular-cookies'
 
-  ///////////////////////////////////////////////////
-  // Create object A
-  ///////////////////////////////////////////////////
-  A = Closure.extend({
-    value: null,
-    init: function() {
-      this.value = 0;
-    },
-    get: function() {
-      return this.value;
-    },
-    set: function(value) {
-      this.value = value;
-    }
+]).config(function(CookiesProvider){
+  CookiesProvider.set('hello', 'moto', {
+    domain: 'www.example.com',
+    expires: 600,
+    secure: true
   });
 
-  // A.init will be called automatically
-  // A.value is equal 0
-  // A.get() will return 0
-  // if A.set(100) then A.value and A.get() will be equal 100
-
-  ///////////////////////////////////////////////////
-  // Extend A object
-  ///////////////////////////////////////////////////
-  A.extend({
-    init: function() {
-      this.value = 200;
-    },
-    get: function() {
-      return 'value=' + this._super();
-    },
-    test: function(){
-      return 'hello moto';
-    }
+}).run(function(Cookies, $http){
+  Cookies.set('hello', 'moto', {
+    domain: 'www.example.com',
+    expires: 600,
+    secure: true
   });
-
-  // A.value is equal 200
-  // A.get() is equal `value=200`. `this._super` will refer to parent function which return `this.value`
-  // A.test() is equal `hello moto`
+  
 });
 ```
 
-**Note:** 
-- `this._super()` does not work in `async` because it will be cleared up at the end of the function. You may need to use `var _super = this._super` before call `async`. 
-- You can extend many levels as you want. 
-- Be careful with `this` object. Take advantage of the best practice below:
+## API Reference
 
+**Methods**  
+[Cookies.set(key, value [, options])](#cookiessetkey-value--options)  
+[Cookies.get(key)](#cookiesgetkey)  
+[Cookies.expire(key [, options])](#cookiesexpirekey--options)
+
+**Properties**  
+[Cookies.enabled](#cookiesenabled)  
+[Cookies.defaults](#cookiesdefaults)
+
+### Methods
+
+#### Cookies.set(key, value [, options])
+*Alias: Cookies(key, value [, options])*
+
+Sets a cookie in the document. If the cookie does not already exist, it will be created. Returns the `Cookies` object.
+
+| Option    | Description                                                                                      | Default     |
+| --------: | ------------------------------------------------------------------------------------------------ | ----------- |
+|    *path* | A string value of the path of the cookie                                                         | `"/"`       |
+|  *domain* | A string value of the domain of the cookie                                                       | `undefined` |
+| *expires* | A number (of seconds), a date parsable string, or a `Date` object of when the cookie will expire | `undefined` |
+|  *secure* | A boolean value of whether or not the cookie should only be available over SSL                   | `false`     |
+
+A default value for any option may be set in the `Cookies.defaults` object.
+
+**Example Usage**
 ```javascript
-angular.module('app', [
-	'angular-closure'
-]).run(function(Closure){
+// Setting a cookie value
+Cookies.set('key', 'value');
 
-  ///////////////////////////////////////////////////
-  // bind `this` object inside callback
-  ///////////////////////////////////////////////////
-  var B = Closure.extend({
-    values: [],
-    init: function(){
-      angular.forEach([1,2,3,4,5], Closure.bind(function(value){
-        this.values.push(value);
-      }, this));
-    }
-  });
+// Chaining sets together
+Cookies.set('key', 'value').set('hello', 'world');
 
-  // B.values is equal [1,2,3,4,5]
-});
+// Setting cookies with additional options
+Cookies.set('key', 'value', { domain: 'www.example.com', secure: true });
+
+// Setting cookies with expiration values
+Cookies.set('key', 'value', { expires: 600 }); // Expires in 10 minutes
+Cookies.set('key', 'value', { expires: '01/01/2012' });
+Cookies.set('key', 'value', { expires: new Date(2012, 0, 1) });
+
+// Using the alias
+Cookies('key', 'value', { secure: true });
+```
+
+#### Cookies.get(key)
+*Alias: Cookies(key)*
+
+Returns the value of the most locally scoped cookie with the specified key.
+
+**Example Usage**
+```javascript
+// First set a cookie
+Cookies.set('key', 'value');
+
+// Get the cookie value
+Cookies.get('key'); // "value"
+
+// Using the alias
+Cookies('key'); // "value"
+```
+    
+#### Cookies.expire(key [, options])
+*Alias: Cookies(key, `undefined` [, options])*
+
+Expires a cookie, removing it from the document. Returns the `Cookies` object.
+
+| Option    | Description                                                                                      | Default     |
+| --------: | ------------------------------------------------------------------------------------------------ | ----------- |
+|    *path* | A string value of the path of the cookie                                                         | `"/"`       |
+|  *domain* | A string value of the domain of the cookie                                                       | `undefined` |
+
+A default value for any option may be set in the `Cookies.defaults` object.
+
+**Example Usage**
+```javascript
+// First set a cookie and get its value
+Cookies.set('key', 'value').get('key'); // "value"
+
+// Expire the cookie and try to get its value
+Cookies.expire('key').get('key'); // undefined
+
+// Using the alias
+Cookies('key', undefined);
+```
+    
+
+### Properties
+
+#### Cookies.enabled
+A boolean value of whether or not the browser has cookies enabled.
+
+**Example Usage**
+```javascript
+if (Cookies.enabled) {
+    Cookies.set('key', 'value');
+}
+```
+
+#### Cookies.defaults
+An object representing default options to be used when setting and expiring cookie values.
+
+| Option    | Description                                                                                      | Default     |
+| --------: | ------------------------------------------------------------------------------------------------ | ----------- |
+|    *path* | A string value of the path of the cookie                                                         | `"/"`       |
+|  *domain* | A string value of the domain of the cookie                                                       | `undefined` |
+| *expires* | A number (of seconds), a date parsable string, or a `Date` object of when the cookie will expire | `undefined` |
+|  *secure* | A boolean value of whether or not the cookie should only be available over SSL                   | `false`     |
+
+**Example Usage**
+```javascript
+Cookies.defaults = {
+    path: '/',
+    secure: true
+};
+
+Cookies.set('key', 'value'); // Will be secure and have a path of '/'
+Cookies.expire('key'); // Will expire the cookie with a path of '/'
 ```
 
 

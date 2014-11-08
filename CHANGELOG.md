@@ -1,4 +1,3 @@
 #### Features
 
-* **Closure.extend**
-* **Closure.bind**
+* **Cookies provider**
