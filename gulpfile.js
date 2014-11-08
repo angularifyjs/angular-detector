@@ -56,8 +56,8 @@ gulp.task('test', function(done) {
 });
 
 gulp.task('uglify', function(done) {
-  return gulp.src('./src/**/*.js')
-    .pipe(concat('closure.js'))
+  return gulp.src(['./bower_components/cookies-js/src/cookies.js', './src/**/*.js'])
+    .pipe(concat('cookies.js'))
     .pipe(ngAnnotate())
     .pipe(header(banner, {
       pkg: pkg,
@@ -65,7 +65,7 @@ gulp.task('uglify', function(done) {
     }))
     .pipe(gulp.dest('./dist'))
 
-    .pipe(concat('closure.min.js'))
+    .pipe(concat('cookies.min.js'))
     .pipe(uglify())
     .pipe(header(banner, {
       pkg: pkg,
