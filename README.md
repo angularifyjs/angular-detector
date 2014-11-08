@@ -1,7 +1,7 @@
 angular-cookies [![Build Status](https://travis-ci.org/angularifyjs/angular-cookies.svg?branch=master)](https://travis-ci.org/angularifyjs/angular-cookies) [![Coverage Status](https://img.shields.io/coveralls/angularifyjs/angular-cookies.svg)](https://coveralls.io/r/angularifyjs/angular-cookies?branch=master)
 ===============
 
-Cookies is a small client-side javascript library that makes managing cookies easily and integrate with AngularJS
+Cookies is a small client-side javascript library that makes managing cookies easily and integrate with AngularJS.
 
 
 Usage

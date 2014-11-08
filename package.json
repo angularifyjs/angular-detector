@@ -1,7 +1,7 @@
 {
   "name": "angular-cookies",
   "version": "1.2.26",
-  "description": "Cookies is a small client-side javascript library that makes managing cookies easily and integrate with AngularJS",
+  "description": "Cookies is a small client-side javascript library that makes managing cookies easily and integrate with AngularJS.",
   "main": "gulpfile.js",
   "scripts": {
     "test": "gulp test"
