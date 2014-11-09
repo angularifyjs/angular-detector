@@ -84,14 +84,14 @@ angular.module('app', [
 
 **Methods**  
 [Detector.getBrowser()](#detectorgetbrowser)  
-[Detector.getDevice()](#detectorgetdevice)
-[Detector.getEngine()](#detectorgetengine)
-[Detector.getOS()](#detectorgetos)
-[Detector.getCPU()](#detectorgetcpu)
-[Detector.getResult()](#detectorgetresult)
-[Detector.getUA()](#detectorgetua)
-[Detector.setUA()](#detectorsetua)
-[Detector.newInstance(uastring, extension)](#detectornewinstanceuastring-extension)
+[Detector.getDevice()](#detectorgetdevice)  
+[Detector.getEngine()](#detectorgetengine)  
+[Detector.getOS()](#detectorgetos)  
+[Detector.getCPU()](#detectorgetcpu)  
+[Detector.getResult()](#detectorgetresult)  
+[Detector.getUA()](#detectorgetua)  
+[Detector.setUA()](#detectorsetua)  
+[Detector.newInstance(uastring, extension)](#detectornewinstanceuastring-extension)  
 
 
 ### Methods
