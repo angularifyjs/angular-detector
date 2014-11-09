@@ -5,6 +5,6 @@
     "angular-mocks": "1.2.26"
   },
   "dependencies": {
-    "cookies-js": "1.1.0"
+    "ua-parser-js": "0.7.2"
   }
 }

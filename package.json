@@ -1,29 +1,31 @@
 {
-  "name": "angular-cookies",
+  "name": "angular-detector",
   "version": "1.2.26",
-  "description": "Cookies is a small client-side javascript library that makes managing cookies easily and integrate with AngularJS.",
+  "description": "Lightweight JavaScript-based User-Agent string parser for Angularjs",
   "main": "gulpfile.js",
   "scripts": {
     "test": "gulp test"
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/angularifyjs/angular-cookies.git"
+    "url": "git://github.com/angularifyjs/angular-detector.git"
   },
   "keywords": [
     "angular",
-    "cookies"
+    "detector",
+    "user-agent",
+    "parser"
   ],
   "author": "Henry Tao <hi@henrytao.me>",
   "licenses": [{
     "type": "MIT",
-    "url": "https://github.com/angularifyjs/angular-cookies/blob/master/LICENSE",
+    "url": "https://github.com/angularifyjs/angular-detector/blob/master/LICENSE",
     "description": "Copyright (c) 2014 Angularfiy.org & HenryTao."
   }],
   "bugs": {
-    "url": "https://github.com/angularifyjs/angular-cookies/issues"
+    "url": "https://github.com/angularifyjs/angular-detector/issues"
   },
-  "homepage": "https://github.com/angularifyjs/angular-cookies",
+  "homepage": "https://github.com/angularifyjs/angular-detector",
   "devDependencies": {
     "coveralls": "2.11.1",
     "expect.js": "0.3.1",
