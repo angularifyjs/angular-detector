@@ -4,8 +4,8 @@
 # ./publish.sh
 
 ARG_DEFS=(init prepare publish cleanup)
-REPO="git@github.com:angularifyjs/bower-angular-cookies.git"
-NAME="angular-cookies"
+REPO="git@github.com:angularifyjs/bower-angular-detector.git"
+NAME="angular-detector"
 
 function init {
   ROOT_DIR=$(resolveDir ../..)
@@ -43,7 +43,7 @@ function prepare {
   echo ""
   echo "------------------------------------------------"
   echo "-- Remove old scripts and copy new scripts"
-  rm -rf cookies*
+  rm -rf detector*
   cp -R ../../LICENSE .
   cp -R ../../dist/* .
 }

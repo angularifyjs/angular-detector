@@ -1,3 +1,3 @@
 #### Features
 
-* **Cookies provider**
+* **Detector provider**

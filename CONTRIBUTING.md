@@ -28,7 +28,7 @@ Checkout `./test/spec` directory to see how the test works. Every further test s
 
 
 ## Submitting a Pull Request
-- Fork the [repository](https://github.com/angularifyjs/angular-closure/)
+- Fork the [repository](https://github.com/angularifyjs/angular-detector/)
 - Make your changes in a new git branch following the coding rules & conventions below.
 - Run the `gulp test` and make sure all tests passed before submitting your pull request.
 - Push and make the PR.
@@ -40,7 +40,7 @@ Checkout `./test/spec` directory to see how the test works. Every further test s
 
 
 ## Commit conventions
-angular-closure uses the same strict conventions as AngularJS and UI-router. These conventions are explained [here](https://github.com/angular/angular.js/blob/master/CONTRIBUTING.md#-git-commit-guidelines).
+angular-detector uses the same strict conventions as AngularJS and UI-router. These conventions are explained [here](https://github.com/angular/angular.js/blob/master/CONTRIBUTING.md#-git-commit-guidelines).
 
 **If you have any suggestions to make this library better, feel free to create a ticket.**
 

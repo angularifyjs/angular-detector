@@ -1,7 +1,7 @@
-angular-cookies [![Build Status](https://travis-ci.org/angularifyjs/angular-cookies.svg?branch=master)](https://travis-ci.org/angularifyjs/angular-cookies) [![Coverage Status](https://img.shields.io/coveralls/angularifyjs/angular-cookies.svg)](https://coveralls.io/r/angularifyjs/angular-cookies?branch=master)
+angular-detector [![Build Status](https://travis-ci.org/angularifyjs/angular-detector.svg?branch=master)](https://travis-ci.org/angularifyjs/angular-detector) [![Coverage Status](https://img.shields.io/coveralls/angularifyjs/angular-detector.svg)](https://coveralls.io/r/angularifyjs/angular-detector?branch=master)
 ===============
 
-Cookies is a small client-side javascript library that makes managing cookies easily and integrate with AngularJS.
+Detector is a lightweight JavaScript-based User-Agent string parser for Angularjs.
 
 
 Usage
@@ -9,50 +9,73 @@ Usage
 
 ## Installing
 
-Download the [Production version](https://raw.githubusercontent.com/angularifyjs/bower-angular-cookies/master/cookies.min.js) or the [Development version](https://raw.githubusercontent.com/angularifyjs/bower-angular-cookies/master/cookies.js).
+Download the [Production version](https://raw.githubusercontent.com/angularifyjs/bower-angular-detector/master/detector.min.js) or the [Development version](https://raw.githubusercontent.com/angularifyjs/bower-angular-detector/master/detector.js).
 
 Or download it with bower: open terminal and run
 
 ```
-bower install bower-angular-cookies
+bower install bower-angular-detector
 ```
 
 Include js files into your web page:
 
 ```html
-<script type="text/javascript" src="[...]/cookies[.min].js"></script>
+<script type="text/javascript" src="[...]/detector[.min].js"></script>
 ```
 
 Add dependency to your app module:
 
 ```javascript
 angular.module('your-app-name', [
-  'angular-cookies'
+  'angular-detector'
 ]);
 ```
 
-The `cookies` module is now installed. It exposes the `CookiesProvider` provider and `Cookies` factory into your app.
+The `detector` module is now installed. It exposes the `DetectorProvider` provider and `Detector` factory into your app.
 
 
 ## Using
 
 ```javascript
 angular.module('app', [
-  'angular-cookies'
+  'angular-detector'
 
-]).config(function(CookiesProvider){
-  CookiesProvider.set('hello', 'moto', {
-    domain: 'www.example.com',
-    expires: 600,
-    secure: true
-  });
+]).config(function(DetectorProvider){
+  DetectorProvider.setUA('Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/535.2 (KHTML, like Gecko) Ubuntu/11.10 Chromium/15.0.874.106 Chrome/15.0.874.106 Safari/535.2');
 
-}).run(function(Cookies, $http){
-  Cookies.set('hello', 'moto', {
-    domain: 'www.example.com',
-    expires: 600,
-    secure: true
-  });
+  var result = DetectorProvider.getResult();
+
+  console.log(result.browser);        // {name: "Chromium", major: "15", version: "15.0.874.106"}
+  console.log(result.device);         // {model: undefined, type: undefined, vendor: undefined}
+  console.log(result.os);             // {name: "Ubuntu", version: "11.10"}
+  console.log(result.os.version);     // "11.10"
+  console.log(result.engine.name);    // "WebKit"
+  console.log(result.cpu.architecture);   // "amd64"
+
+}).run(function(Detector){
+  Detector.setUA('Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/535.2 (KHTML, like Gecko) Ubuntu/11.10 Chromium/15.0.874.106 Chrome/15.0.874.106 Safari/535.2');
+
+  var result = Detector.getResult();
+
+  console.log(result.browser);        // {name: "Chromium", major: "15", version: "15.0.874.106"}
+  console.log(result.device);         // {model: undefined, type: undefined, vendor: undefined}
+  console.log(result.os);             // {name: "Ubuntu", version: "11.10"}
+  console.log(result.os.version);     // "11.10"
+  console.log(result.engine.name);    // "WebKit"
+  console.log(result.cpu.architecture);   // "amd64"
+
+  // this will also produce the same result
+  /*
+  var detector = Detector.newInstance('Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/535.2 (KHTML, like Gecko) Ubuntu/11.10 Chromium/15.0.874.106 Chrome/15.0.874.106 Safari/535.2');
+  var result = detector.getResult();
+
+  console.log(result.browser);        // {name: "Chromium", major: "15", version: "15.0.874.106"}
+  console.log(result.device);         // {model: undefined, type: undefined, vendor: undefined}
+  console.log(result.os);             // {name: "Ubuntu", version: "11.10"}
+  console.log(result.os.version);     // "11.10"
+  console.log(result.engine.name);    // "WebKit"
+  console.log(result.cpu.architecture);   // "amd64"
+  */
   
 });
 ```
@@ -60,139 +83,124 @@ angular.module('app', [
 ## API Reference
 
 **Methods**  
-[Cookies.set(key, value [, options])](#cookiessetkey-value--options)  
-[Cookies.get(key)](#cookiesgetkey)  
-[Cookies.expire(key [, options])](#cookiesexpirekey--options)
+[Detector.getBrowser()](#detectorgetbrowser)  
+[Detector.getDevice()](#detectorgetdevice)
+[Detector.getEngine()](#detectorgetengine)
+[Detector.getOS()](#detectorgetos)
+[Detector.getCPU()](#detectorgetcpu)
+[Detector.getResult()](#detectorgetresult)
+[Detector.getUA()](#detectorgetua)
+[Detector.setUA()](#detectorsetua)
+[Detector.newInstance(uastring, extension)](#detectornewinstanceuastring-extension)
 
-**Properties**  
-[Cookies.enabled](#cookiesenabled)  
-[Cookies.defaults](#cookiesdefaults)
 
 ### Methods
 
-#### Cookies.set(key, value [, options])
-*Alias: Cookies(key, value [, options])*
+#### Detector.getBrowser()
 
-Sets a cookie in the document. If the cookie does not already exist, it will be created. Returns the `Cookies` object.
+returns `{ name: '', major: '', version: '' }`
 
-| Option    | Description                                                                                      | Default     |
-| --------: | ------------------------------------------------------------------------------------------------ | ----------- |
-|    *path* | A string value of the path of the cookie                                                         | `"/"`       |
-|  *domain* | A string value of the domain of the cookie                                                       | `undefined` |
-| *expires* | A number (of seconds), a date parsable string, or a `Date` object of when the cookie will expire | `undefined` |
-|  *secure* | A boolean value of whether or not the cookie should only be available over SSL                   | `false`     |
+```
+# Possible 'browser.name':
+Amaya, Arora, Avant, Baidu, Blazer, Bolt, Camino, Chimera, Chrome, Chromium, 
+Comodo Dragon, Conkeror, Dillo, Dolphin, Doris, Epiphany, Fennec, Firebird, 
+Firefox, Flock, GoBrowser, iCab, ICE Browser, IceApe, IceCat, IceDragon, 
+Iceweasel, IE [Mobile], Iron, Jasmine, K-Meleon, Konqueror, Kindle, Links, 
+Lunascape, Lynx, Maemo, Maxthon, Midori, Minimo, [Mobile] Safari, Mosaic, Mozilla, 
+Netfront, Netscape, NetSurf, Nokia, OmniWeb, Opera [Mini/Mobi/Tablet], Phoenix, 
+Polaris, QQBrowser, RockMelt, Silk, Skyfire, SeaMonkey, SlimBrowser, Swiftfox, 
+Tizen, UCBrowser, w3m, Yandex
 
-A default value for any option may be set in the `Cookies.defaults` object.
-
-**Example Usage**
-```javascript
-// Setting a cookie value
-Cookies.set('key', 'value');
-
-// Chaining sets together
-Cookies.set('key', 'value').set('hello', 'world');
-
-// Setting cookies with additional options
-Cookies.set('key', 'value', { domain: 'www.example.com', secure: true });
-
-// Setting cookies with expiration values
-Cookies.set('key', 'value', { expires: 600 }); // Expires in 10 minutes
-Cookies.set('key', 'value', { expires: '01/01/2012' });
-Cookies.set('key', 'value', { expires: new Date(2012, 0, 1) });
-
-// Using the alias
-Cookies('key', 'value', { secure: true });
+# 'browser.version' & 'browser.major' determined dynamically
 ```
 
-#### Cookies.get(key)
-*Alias: Cookies(key)*
+#### Detector.getDevice()
 
-Returns the value of the most locally scoped cookie with the specified key.
+returns `{ model: '', type: '', vendor: '' }` 
 
-**Example Usage**
-```javascript
-// First set a cookie
-Cookies.set('key', 'value');
-
-// Get the cookie value
-Cookies.get('key'); // "value"
-
-// Using the alias
-Cookies('key'); // "value"
 ```
-    
-#### Cookies.expire(key [, options])
-*Alias: Cookies(key, `undefined` [, options])*
+# Possible 'device.type':
+console, mobile, tablet, smarttv, wearable, embedded
 
-Expires a cookie, removing it from the document. Returns the `Cookies` object.
+# Possible 'device.vendor':
+Acer, Alcatel, Amazon, Apple, Archos, Asus, BenQ, BlackBerry, Dell, GeeksPhone, 
+Google, HP, HTC, Huawei, Jolla, Lenovo, LG, Meizu, Microsoft, Motorola, Nexian, 
+Nintendo, Nokia, Nvidia, Ouya, Palm, Panasonic, Polytron, RIM, Samsung, Sharp, 
+Siemens, Sony-Ericsson, Sprint, Xbox, ZTE
 
-| Option    | Description                                                                                      | Default     |
-| --------: | ------------------------------------------------------------------------------------------------ | ----------- |
-|    *path* | A string value of the path of the cookie                                                         | `"/"`       |
-|  *domain* | A string value of the domain of the cookie                                                       | `undefined` |
-
-A default value for any option may be set in the `Cookies.defaults` object.
-
-**Example Usage**
-```javascript
-// First set a cookie and get its value
-Cookies.set('key', 'value').get('key'); // "value"
-
-// Expire the cookie and try to get its value
-Cookies.expire('key').get('key'); // undefined
-
-// Using the alias
-Cookies('key', undefined);
-```
-    
-
-### Properties
-
-#### Cookies.enabled
-A boolean value of whether or not the browser has cookies enabled.
-
-**Example Usage**
-```javascript
-if (Cookies.enabled) {
-    Cookies.set('key', 'value');
-}
+# 'device.model' determined dynamically
 ```
 
-#### Cookies.defaults
-An object representing default options to be used when setting and expiring cookie values.
+#### Detector.getEngine()
 
-| Option    | Description                                                                                      | Default     |
-| --------: | ------------------------------------------------------------------------------------------------ | ----------- |
-|    *path* | A string value of the path of the cookie                                                         | `"/"`       |
-|  *domain* | A string value of the domain of the cookie                                                       | `undefined` |
-| *expires* | A number (of seconds), a date parsable string, or a `Date` object of when the cookie will expire | `undefined` |
-|  *secure* | A boolean value of whether or not the cookie should only be available over SSL                   | `false`     |
+returns `{ name: '', version: '' }`
 
-**Example Usage**
-```javascript
-Cookies.defaults = {
-    path: '/',
-    secure: true
-};
-
-Cookies.set('key', 'value'); // Will be secure and have a path of '/'
-Cookies.expire('key'); // Will expire the cookie with a path of '/'
 ```
+# Possible 'engine.name'
+Amaya, Gecko, iCab, KHTML, Links, Lynx, NetFront, NetSurf, Presto, Tasman, 
+Trident, w3m, WebKit
+
+# 'engine.version' determined dynamically
+```
+
+#### Detector.getOS()
+
+returns `{ name: '', version: '' }`
+
+```
+# Possible 'os.name'
+AIX, Amiga OS, Android, Arch, Bada, BeOS, BlackBerry, CentOS, Chromium OS, Contiki,
+Fedora, Firefox OS, FreeBSD, Debian, DragonFly, Gentoo, GNU, Haiku, Hurd, iOS, 
+Joli, Linpus, Linux, Mac OS, Mageia, Mandriva, MeeGo, Minix, Mint, Morph OS, NetBSD, 
+Nintendo, OpenBSD, OpenVMS, OS/2, Palm, PCLinuxOS, Plan9, Playstation, QNX, RedHat, 
+RIM Tablet OS, RISC OS, Sailfish, Series40, Slackware, Solaris, SUSE, Symbian, Tizen, 
+Ubuntu, UNIX, VectorLinux, WebOS, Windows [Phone/Mobile], Zenwalk
+
+# 'os.version' determined dynamically
+```
+
+#### Detector.getCPU()
+
+returns `{ architecture: '' }`
+
+```
+# Possible 'cpu.architecture'
+68k, amd64, arm, arm64, avr, ia32, ia64, irix, irix64, mips, mips64, pa-risc, 
+ppc, sparc, sparc64
+```
+
+#### Detector.getResult()
+
+returns `{ ua: '', browser: {}, cpu: {}, device: {}, engine: {}, os: {} }`
+
+#### Detector.getUA()
+
+returns UA string of current instance
+
+#### Detector.setUA()
+
+set & parse UA string
+
+#### Detector.newInstance(uastring, extension)
+
+returns new instance of Detector
+
+For more information about extension, please visit [https://github.com/faisalman/ua-parser-js](https://github.com/faisalman/ua-parser-js)
 
 
 Documentation
 -------------
-See [Getting started](https://github.com/angularifyjs/angular-cookies/wiki/Getting-started)
+See [Getting started](https://github.com/angularifyjs/angular-detector/wiki/Getting-started)
 
 
 Release History
 -------------
-See [CHANGELOG.md](https://github.com/angularifyjs/angular-cookies/blob/master/CHANGELOG.md)
+See [CHANGELOG.md](https://github.com/angularifyjs/angular-detector/blob/master/CHANGELOG.md)
 
 
 Contributing
 -------------
-See [CONTRIBUTING.md](https://github.com/angularifyjs/angular-cookies/blob/master/CONTRIBUTING.md)
+See [CONTRIBUTING.md](https://github.com/angularifyjs/angular-detector/blob/master/CONTRIBUTING.md)
 
 
 License

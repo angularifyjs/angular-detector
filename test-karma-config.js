@@ -15,7 +15,7 @@ module.exports = function(config) {
     files: [
       './bower_components/angular/angular.min.js',
       './bower_components/angular-mocks/angular-mocks.js',
-      './bower_components/ua-parser-js/dist/ua-parser.min.js',
+      './bower_components/ua-parser-js/src/ua-parser.js',
       './node_modules/expect.js/index.js',
       './src/**/*.js',
       './test/spec/**/*.js'
