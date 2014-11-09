@@ -14,7 +14,7 @@ Download the [Production version](https://raw.githubusercontent.com/angularifyjs
 Or download it with bower: open terminal and run
 
 ```
-bower install angular-cookies
+bower install bower-angular-cookies
 ```
 
 Include js files into your web page:
