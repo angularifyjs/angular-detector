@@ -182,17 +182,17 @@ Cookies.expire('key'); // Will expire the cookie with a path of '/'
 
 Documentation
 -------------
-See [Getting started](https://github.com/angularifyjs/angular-closure/wiki/Getting-started)
+See [Getting started](https://github.com/angularifyjs/angular-cookies/wiki/Getting-started)
 
 
 Release History
 -------------
-See [CHANGELOG.md](https://github.com/angularifyjs/angular-closure/blob/master/CHANGELOG.md)
+See [CHANGELOG.md](https://github.com/angularifyjs/angular-cookies/blob/master/CHANGELOG.md)
 
 
 Contributing
 -------------
-See [CONTRIBUTING.md](https://github.com/angularifyjs/angular-closure/blob/master/CONTRIBUTING.md)
+See [CONTRIBUTING.md](https://github.com/angularifyjs/angular-cookies/blob/master/CONTRIBUTING.md)
 
 
 License
